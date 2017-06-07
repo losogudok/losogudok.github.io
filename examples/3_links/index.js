@@ -1,24 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Router, Route} from 'react-router'
+import {Link} from 'react-router-dom'
 import createHistory from 'history/createHashHistory'
 
 const history = createHistory()
 
-const App = () => (
-    <Router history={history}>
-        <div>
-            <Route path='/recipes' component={RecipesList} />
-            <Route path='/new' component={NewRecipe} />
-        </div>
-    </Router>
-)
-
-
 const RecipesList = () => (
     <div>
         <h1>
-            Рецепты
+            Список рецептов
         </h1>
         <ul>
             <li>Борщ</li>
@@ -33,6 +24,25 @@ const NewRecipe = () => (
         <div>Новый рецепт</div>
         <textarea name='recipe' id='recipe' cols="30" rows="10" placeholder='Напиши свой рецепт'></textarea>
     </div>
+)
+
+const App = () => (
+    <Router history={history}>
+        <div>
+            <div>
+                <Link to='/recipes'>
+                    Рецепты
+                </Link>
+            </div>
+            <div>
+                <Link to='/recipes/new'>
+                    Новый рецепт
+                </Link>
+            </div>
+            <Route exact path='/recipes' component={RecipesList}/>
+            <Route exact path='/recipes/new' component={NewRecipe}/>
+        </div>
+    </Router>
 )
 
 ReactDOM.render(

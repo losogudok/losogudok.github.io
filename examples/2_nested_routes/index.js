@@ -8,23 +8,22 @@ const history = createHistory()
 const App = () => (
     <Router history={history}>
         <div>
-            <Route path='/recipes' component={RecipesList} />
-            <Route path='/new' component={NewRecipe} />
+            <Route path='/recipes' component={RecipesList}/>
         </div>
     </Router>
 )
 
-
-const RecipesList = () => (
+const RecipesList = ({match}) => (
     <div>
         <h1>
-            Рецепты
+            Список рецептов
         </h1>
         <ul>
             <li>Борщ</li>
             <li>Утка по-пекински</li>
             <li>Рыбы Фуга</li>
         </ul>
+        <Route path={`${match.url}/new`} component={NewRecipe} />
     </div>
 )
 
