@@ -23,7 +23,7 @@ const RecipesList = ({match}) => (
             <li>Утка по-пекински</li>
             <li>Рыбы Фуга</li>
         </ul>
-        <Route path={`${match.url}/new`} component={NewRecipe} />
+        <Route path={`/recipes/new`} component={NewRecipe} />
     </div>
 )
 
